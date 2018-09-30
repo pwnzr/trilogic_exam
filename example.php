@@ -35,6 +35,68 @@ $ordersSum = OrdersQuery::create()
 	->find();
 $izpis .= "\nVsota vseh naročil po datumu:\n" . $ordersSum;
 //izpis queryjev
-echo $izpis;
+echo $izpis . "\n\n";
+
+//preračunavanje razdalje
+
+//izpis krajev in restavracij iz tabele orders
+
+
+/*$test = OrdersQuery::create()                                      // ZAKAJ ERROR???!!!
+	->orderByDate()
+	->select(array('RestaurantId','AddressId'))
+	->find();
+print_r($test);*/
+
+
+/*$restaurantsId = OrdersQuery::create()
+	->orderByDate()
+	->select('RestaurantId')
+	->find();
+	
+$addressesId = OrdersQuery::create()
+	->orderByDate()
+	->select('AddressId')
+	->find();	
+
+$geoLocation = array();
+foreach ($restaurantsId as $restaurantId){ 
+	$restaurantLat = RestaurantsQuery::create()
+		->filterById($restaurantId)
+		->select('Lat')
+		->find();
+	$restaurantLng = RestaurantsQuery::create()
+		->filterById($restaurantId)
+		->select('Lng')
+		->find();
+}
+foreach ($addressesId as $addressId){ 
+	$addressLat = AddressesQuery::create()
+		->filterById($addressId)
+		->select('Lat')
+		->find();
+	$addressLng = AddressesQuery::create()
+		->filterById($addressId)
+		->select('Lng')
+		->find();
+	echo $addressLat;
+	
+}*/
+//echo $test . "\n" . $test2 . "\n" . $check;
+$test = OrdersQuery::create()                                      
+	->orderByDate()
+	->select('AddressId')
+	->find();
+echo $test;
+/*$test2 = AddressesQuery::create()
+	->filterById($test)
+	->select(array('Lat','Lng'))
+	->find();
+$distances = new Restaurants();
+$distances-> address($test2);
+//echo $distances;
+
+
+
 
 

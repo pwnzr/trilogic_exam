@@ -54,7 +54,7 @@ CREATE TABLE [orders]
     [user_id] INTEGER NOT NULL,
     [address_id] INTEGER NOT NULL,
     [restaurant_id] INTEGER NOT NULL,
-    [value] FLOAT NOT NULL,
+    [value] REAL NOT NULL,
     [date] DATETIME NOT NULL,
     [status] INTEGER NOT NULL,
     UNIQUE ([id]),

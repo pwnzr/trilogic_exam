@@ -28,7 +28,7 @@
 		<column name="user_id" type="integer" required="true"/>
 		<column name="address_id" type="integer" required="true"/>
 		<column name="restaurant_id" type="integer" required="true"/>
-		<column name="value" type="float" required="true"/>
+		<column name="value" type="real" required="true"/>
 		<column name="date" type="date" required="true"/>
 		<column name="status" type="integer" required="true"/>
 			<foreign-key foreignTable="user">

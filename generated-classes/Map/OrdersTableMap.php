@@ -160,7 +160,7 @@ class OrdersTableMap extends TableMap
         $this->addForeignKey('user_id', 'UserId', 'INTEGER', 'user', 'id', true, null, null);
         $this->addForeignKey('address_id', 'AddressId', 'INTEGER', 'addresses', 'id', true, null, null);
         $this->addForeignKey('restaurant_id', 'RestaurantId', 'INTEGER', 'restaurants', 'id', true, null, null);
-        $this->addColumn('value', 'Value', 'FLOAT', true, null, null);
+        $this->addColumn('value', 'Value', 'REAL', true, null, null);
         $this->addColumn('date', 'Date', 'DATE', true, null, null);
         $this->addColumn('status', 'Status', 'INTEGER', true, null, null);
     } // initialize()
