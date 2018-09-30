@@ -93,8 +93,8 @@ echo $test;
 	->select(array('Lat','Lng'))
 	->find();
 $distances = new Restaurants();
-$distances-> address($test2);
-//echo $distances;
+$distances-> address($test2);*/
+//echo $distances;*/
 
 
 
