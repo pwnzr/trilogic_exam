@@ -23,16 +23,40 @@ class Restaurants extends BaseRestaurants //15
 	* @param $lng2 float Longitude of point 2.
 	* @return float Distance in meters
 	*/	
+	/*public function addressLat()
+	{
+		$addressId = OrdersQuery::create()                                      
+			->orderByDate()
+			->select('AddressId')
+			->find();	
+		$lat2 = AddressesQuery::create()
+			->filterById($addressId)
+			->select('lat')
+			->find();
+	}
+	public function addressLng()
+	{
+		$addressId = OrdersQuery::create()                                      
+			->orderByDate()
+			->select('AddressId')
+			->findOne();	
+		$lng2 = AddressesQuery::create()
+			->filterById($addressId)
+			->select('lat')
+			->find();
+	}*/
+
 	public function latLngToDistance($lat1, $lng1, $lat2, $lng2)
 	{
+		
 		$north = ($lat2 - $lat1) * 110574;
 		$mean_lat = ($lat2 + $lat1) / 2.0;
 		$east = ($lng2 - $lng1) * 111320 * cos($mean_lat / 180.0 * pi());
 		return sqrt(pow($north, 2) + pow($east, 2));
+		
+
 	}
-	public function address($address){
-		print_r($address);
-	}
+
 	
 
 }

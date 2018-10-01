@@ -42,25 +42,17 @@ echo $izpis . "\n\n";
 //izpis krajev in restavracij iz tabele orders
 
 
-/*$test = OrdersQuery::create()                                      // ZAKAJ ERROR???!!!
-	->orderByDate()
-	->select(array('RestaurantId','AddressId'))
-	->find();
-print_r($test);*/
-
-
-/*$restaurantsId = OrdersQuery::create()
-	->orderByDate()
-	->select('RestaurantId')
+$test = OrdersQuery::create()                                     
+	->select(array('Id','UserId','RestaurantId','AddressId','Value','Date','Status'))
 	->find();
 	
-$addressesId = OrdersQuery::create()
-	->orderByDate()
-	->select('AddressId')
-	->find();	
 
-$geoLocation = array();
-foreach ($restaurantsId as $restaurantId){ 
+foreach ($test as $testIds){
+	$testOne = OrdersQuery::create()                                   
+	->filterById($testIds['Id'])
+	->find();
+	$restaurantId = $testIds['RestaurantId'];
+	$addressId = $testIds['AddressId'];
 	$restaurantLat = RestaurantsQuery::create()
 		->filterById($restaurantId)
 		->select('Lat')
@@ -69,8 +61,6 @@ foreach ($restaurantsId as $restaurantId){
 		->filterById($restaurantId)
 		->select('Lng')
 		->find();
-}
-foreach ($addressesId as $addressId){ 
 	$addressLat = AddressesQuery::create()
 		->filterById($addressId)
 		->select('Lat')
@@ -79,22 +69,26 @@ foreach ($addressesId as $addressId){
 		->filterById($addressId)
 		->select('Lng')
 		->find();
-	echo $addressLat;
+	$restaurants =RestaurantsQuery::create()
+		->filterById($restaurantId)
+		->select(array('Id','Name','Lat','Lng'))
+		->find();
+
+	$lat1 = (float)$restaurantLat[0];
+	$lng1 = (float)$restaurantLng[0];
+	$lat2 = (float)$addressLat[0];
+	$lng2 = (float)$addressLng[0];	
+
+	$distances = new Restaurants();
 	
-}*/
-//echo $test . "\n" . $test2 . "\n" . $check;
-$test = OrdersQuery::create()                                      
-	->orderByDate()
-	->select('AddressId')
-	->find();
-echo $test;
-/*$test2 = AddressesQuery::create()
-	->filterById($test)
-	->select(array('Lat','Lng'))
-	->find();
-$distances = new Restaurants();
-$distances-> address($test2);*/
-//echo $distances;*/
+	if ($distances->latLngToDistance($lat1,$lng1,$lat2,$lng2) >= 2000){
+		echo 'Naročilo je izven radija dostave:' . $testOne;	
+	}
+
+}
+
+
+
 
 
 
