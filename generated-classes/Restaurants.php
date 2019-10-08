@@ -39,7 +39,7 @@ class Restaurants extends BaseRestaurants //15
 		if( sqrt(pow($north, 2) + pow($east, 2)) < 2000 ) {
 			return true;
 		} else {
-			echo 'Naslov ' . $address . ' ni znotraj radija dostave ' . $this-> name . '. Radij je' . sqrt(pow($north, 2) + pow($east, 2)) . "\n";
+			//echo 'Naslov ' . $address . ' ni znotraj radija dostave ' . $this-> name . '. Radij je' . sqrt(pow($north, 2) + pow($east, 2)) . "\n";
 			return false;
 		};
 	}
