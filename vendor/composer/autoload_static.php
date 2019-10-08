@@ -9,16 +9,19 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Contracts\\Translation\\' => 30,
+            'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Validator\\' => 28,
-            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\Console\\' => 26,
@@ -27,10 +30,15 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Container\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Php73\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -39,6 +47,14 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Symfony\\Contracts\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation-contracts',
+        ),
+        'Symfony\\Contracts\\Service\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/service-contracts',
+        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
@@ -46,10 +62,6 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
         'Symfony\\Component\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/validator',
-        ),
-        'Symfony\\Component\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Symfony\\Component\\Finder\\' => 
         array (
@@ -70,6 +82,10 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
     );
 
@@ -94,6 +110,7 @@ class ComposerStaticInitfa5c7bed4a25c02607d6309c2ee55fe2
         'Base\\RestaurantsQuery' => __DIR__ . '/../..' . '/generated-classes/Base/RestaurantsQuery.php',
         'Base\\User' => __DIR__ . '/../..' . '/generated-classes/Base/User.php',
         'Base\\UserQuery' => __DIR__ . '/../..' . '/generated-classes/Base/UserQuery.php',
+        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Map\\AddressesTableMap' => __DIR__ . '/../..' . '/generated-classes/Map/AddressesTableMap.php',
         'Map\\OrdersTableMap' => __DIR__ . '/../..' . '/generated-classes/Map/OrdersTableMap.php',
         'Map\\RestaurantsTableMap' => __DIR__ . '/../..' . '/generated-classes/Map/RestaurantsTableMap.php',

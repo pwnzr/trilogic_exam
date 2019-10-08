@@ -16,6 +16,7 @@ return array(
     'Base\\RestaurantsQuery' => $baseDir . '/generated-classes/Base/RestaurantsQuery.php',
     'Base\\User' => $baseDir . '/generated-classes/Base/User.php',
     'Base\\UserQuery' => $baseDir . '/generated-classes/Base/UserQuery.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Map\\AddressesTableMap' => $baseDir . '/generated-classes/Map/AddressesTableMap.php',
     'Map\\OrdersTableMap' => $baseDir . '/generated-classes/Map/OrdersTableMap.php',
     'Map\\RestaurantsTableMap' => $baseDir . '/generated-classes/Map/RestaurantsTableMap.php',

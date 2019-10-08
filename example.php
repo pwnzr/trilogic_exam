@@ -35,62 +35,44 @@ $ordersSum = OrdersQuery::create()
 	->find();
 $izpis .= "\nVsota vseh naročil po datumu:\n" . $ordersSum;
 //izpis queryjev
-echo $izpis . "\n\n";
+$izpis .= "\n\n";
 
 //preračunavanje razdalje
 
 //izpis krajev in restavracij iz tabele orders
 
 
-$test = OrdersQuery::create()                                     
-	->select(array('Id','UserId','RestaurantId','AddressId','Value','Date','Status'))
-	->find();
-	
 
-foreach ($test as $testIds){
-	$testOne = OrdersQuery::create()                                   
-	->filterById($testIds['Id'])
-	->find();
-	$restaurantId = $testIds['RestaurantId'];
-	$addressId = $testIds['AddressId'];
-	$restaurantLat = RestaurantsQuery::create()
-		->filterById($restaurantId)
-		->select('Lat')
-		->find();
-	$restaurantLng = RestaurantsQuery::create()
-		->filterById($restaurantId)
-		->select('Lng')
-		->find();
-	$addressLat = AddressesQuery::create()
-		->filterById($addressId)
-		->select('Lat')
-		->find();
-	$addressLng = AddressesQuery::create()
-		->filterById($addressId)
-		->select('Lng')
-		->find();
-	$restaurants =RestaurantsQuery::create()
-		->filterById($restaurantId)
+$restaurants =RestaurantsQuery::create()
 		->select(array('Id','Name','Lat','Lng'))
 		->find();
+$addresses = AddressesQuery::create()
+		->select(array('Id','Address','Lat','Lng'))
+		->find();
+$counter = 1;
+$izpis .= "\n Neveljavna naročila so:" ;
 
-	$lat1 = (float)$restaurantLat[0];
-	$lng1 = (float)$restaurantLng[0];
-	$lat2 = (float)$addressLat[0];
-	$lng2 = (float)$addressLng[0];	
 
-	$distances = new Restaurants();
-	
-	if ($distances->latLngToDistance($lat1,$lng1,$lat2,$lng2) >= 2000){
-		echo 'Naročilo je izven radija dostave:' . $testOne;	
+foreach ($restaurants as $restaurant){
+	${'restaurant' . $counter} = new Restaurants();
+	${'restaurant' . $counter}-> setRestaurant($restaurant['Id'],$restaurant['Name'],$restaurant['Lat'],$restaurant['Lng']);
+	foreach ($addresses as $address){
+		if(${'restaurant' . $counter}->latLngToDistance($address['Id'],$address['Address'],$address['Lat'],$address['Lng'])){
+		 // je znotraj radija dostave
+		} else {
+			//Ni znotraj radija dostave
+			$orderInvalid = OrdersQuery::create()
+			->filterByAddressId($address['Id'])
+			->filterByRestaurantId(${'restaurant' . $counter}->id)
+			->find();
+			if($orderInvalid->isEmpty()) {
+
+			}else {
+			$izpis .= $orderInvalid;
+			}
+		};
 	}
-
-}
-
-
-
-
-
-
-
-
+	
+	$counter = ++$counter;
+} 
+echo $izpis;
